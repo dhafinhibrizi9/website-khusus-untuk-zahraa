@@ -1,0 +1,239 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffd1dc, #f8c8dc, #f5b6c9);
+            font-family: 'Playfair Display', serif;
+            color: #8a4b76;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d46a92, transparent);
+        }
+
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #b24a6d;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #9e4a6b;
+        }
+
+        .author-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .author-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 8px 20px rgba(180, 74, 109, 0.3);
+            transition: transform 0.5s ease;
+        }
+
+        .author-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .author-info {
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .author-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #b24a6d;
+            margin-bottom: 10px;
+        }
+
+        .author-bio {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #8a4b76;
+        }
+
+        .poems-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .poem-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(180, 74, 109, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            height: 60rem;
+        }
+
+        .poem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #ffb6c1, #d46a92);
+        }
+
+        .poem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(180, 74, 109, 0.25);
+        }
+
+        .poem-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(180, 74, 109, 0.2);
+        }
+
+        .poem-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #b24a6d;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 1px dashed #e8b4c5;
+            padding-bottom: 10px;
+        }
+
+        .poem-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            text-align: center;
+            color: #7a4a6b;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .poem-content p {
+            margin-bottom: 12px;
+        }
+
+        .signature {
+            text-align: right;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            color: #b24a6d;
+            margin-top: 15px;
+        }
+
+        .decoration {
+            text-align: center;
+            margin: 15px 0;
+            color: #d46a92;
+            font-size: 1.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #8a4b76;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(180, 74, 109, 0.2);
+            width: 100%;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: #b24a6d;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #8a4b76;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .author-photo {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .author-name {
+                font-size: 2rem;
+            }
+            
+            .poem-card {
+                padding: 20px;
+            }
+            
+            .poem-image {
+                height: 180px;
+            }
+            
+            .poems-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .poems-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }

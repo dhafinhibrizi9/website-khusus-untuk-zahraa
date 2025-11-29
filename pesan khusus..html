@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pesan spesial</title>
+    <link rel="stylesheet" href="pesan khusus.css">
+</head>
+<body>
+     <div class="hearts-container" id="heartsContainer"></div>
+    
+    <div class="container">
+        <div class="love-letter">
+            <div class="letter-header">
+                <div class="heart-decoration">❤️</div>
+                <h1>Untuk Seseorang yang Spesial</h1>
+                <p>Sebuah pesan khusus hanya untuk zahraa</p>
+            </div>
+            
+            <div class="letter-content">
+                <p>Hai, mungkin kamu sedikit terkejut menerima pesan ini. Aku sudah lama ingin menyampaikan isi hatiku, tetapi selalu saja ada keraguan yang menghalangi. Hari ini, aku memutuskan untuk memberanikan diri dan menuliskannya untukmu.</p>
+                
+                <p>Sejak pertama kali kita bertemu, ada sesuatu yang berbeda. Bukan hanya tentang penampilanmu, tapi lebih tentang caramu membawa diri, senyuman tulus yang selalu menghiasi wajahmu, dan cara kamu memperlakukan orang di sekitarmu dengan kebaikan dan perhatian.</p>
+                
+                <p class="highlight">mungkin kamuu juga bertanya2 siapa yg membuat website ini dan mengapa saya membuat website ini sedangkan kita aja belum pernah beinteraksi sama sekali.</p>
+                
+                <div class="flowers-divider">
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                </div>
+                
+                <p>dan saya ingin minta maaf jika mungkin sebelum ini  kau dah denger beberapa isu, dan di sini saya ingin menegaskan bahwa tujuan saya buat website ini bukan untuk mengajakmu pacaran tujuan saya Tujuanku adalah untuk tumbuh bersamamu. untuk menjadi seseorang yang bisa mengapresiasi dan mendukung perjalanan hidupmu, langkah demi langkah. Aku ingin kita menjadi teman perjalanan yang hebat—yang saling menguatkan, yang saling menginspirasi.
+
+
+                </p>
+                
+                <div class="memories-section">
+                    <h3> alasan kubuat website ini untukmu</h3>
+                    <div class="memories-list">
+                        <div class="memory-item">
+                            <i class="fas fa-laugh-beam"></i>
+                            <strong>Impian</strong> saya tau kau mempunyai impian yg sangat besar dan saya pun sama jadi tujuan saya buat website ini bukan untuk mengajak mu pacaran tetapi perantra sebagai tempat kita bisa tumbuh bersama.
+                        </div>
+                        <div class="memory-item">
+                            <i class="fas fa-coffee"></i>
+                            <strong>spesial</strong> saya sengaja membuat website ini khusus untuk mu karna saya ingin memberikan hal yg lebih spesial di hari ulang tahunmu yg jarang orang terima pada umumnya karna kamu spesial jadi saya hanya ingin memberimu satu hal yg sepesial yg blm tentu semua orang bisa dapatkan .
+                        </div>
+                       
+                    </div>
+                </div>
+                
+                <p>aku ingin kamu tahu bahwa yang kurasakan ini sangat nyata. bukan hanya sekadar perasaan sesaat atau kekaguman sementara.Tapi aku juga paham jika kita ber 2 saling memiliki impian yg sangat besar dan menurut dan melakukan pacaran itu hanya akan menambah beban yg kita akan pingkul,jadi di sini  saya tida untuk mengajak pacaran tapi melainkan untuk saling mensupport dan menemani dalam mengejar impianya masign2.</p>
+                
+                <p>Tentu saja, aku memahami jika kamu membutuhkan waktu untuk memikirkan ini. Aku tidak ingin terburu-buru atau membuatmu tidak nyaman. Yang kuharap hanyalah kesempatan untuk menunjukkan bahwa aku serius dengan perkataanku.</p>
+                
+               
+                <div class="closing">
+                    <p>terima kasih sudah meluangkan waktu untuk membaca isi hatiku.</p>
+                </div>
+                
+                <div class="signature">
+                    apakah kamu suka website ini<br>
+
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-love" id="btnLove">
+                        <i class="fas fa-heart"></i> iyaa aku sukaa
+                    </button>
+                    <button class="btn btn-friends" id="btnFriends">
+                        <i class="fas fa-handshake"></i> biasa aja
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="response-message" id="responseMessage">
+            <!-- Konten akan diisi oleh JavaScript -->
+        </div>
+    </div>
+
+    <script src="pesan.js">
+         document.addEventListener('DOMContentLoaded', function() {
+            const btnLove = document.getElementById('btnLove');
+            const btnFriends = document.getElementById('btnFriends');
+            const responseMessage = document.getElementById('responseMessage');
+            const heartsContainer = document.getElementById('heartsContainer');
+            
+            // GANTI DENGAN USERNAME INSTAGRAM ANDA
+            const yourInstagramUsername = "dhavinhibrizi";
+            const instagramUrl = `https://www.instagram.com/dhavinhibrizi/`;
+            
+            // Membuat efek hujan hati
+            function createHearts() {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-particle');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 4 + 3 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                heartsContainer.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+            }
+            
+            // Menjalankan efek hujan hati secara berkala
+            setInterval(createHearts, 400);
+            
+            // Efek hati ekstra
+            function createHeartsBurst(count) {
+                for (let i = 0; i < count; i++) {
+                    setTimeout(() => {
+                        createHearts();
+                    }, i * 100);
+                }
+            }
+            
+            // Tombol "Aku Juga Menyukaimu" diklik
+            btnLove.addEventListener('click', function() {
+                responseMessage.innerHTML = `
+                    <h2>💖 Aku Sangat Senang! 💖</h2>
+                    <p>Kamu tidak tahu betapa bahagianya aku mendengar ini! Ini seperti mimpi yang menjadi kenyataan.</p>
+                    <p>Aku benar-benar ingin mengenalmu lebih dalam dan membangun sesuatu yang indah bersama.</p>
+                    <p>Mari kita mulai perjalanan ini dengan berbicara lebih lanjut. Kirim pesan ke Instagram ku ya!</p>
+                    <a href="${instagramUrl}" class="ig-direct" target="_blank">
+                        <i class="fab fa-instagram"></i> Chat Aku di Instagram
+                    </a>
+                    <p style="margin-top: 20px; font-size: 1rem; color: #7c3a5c;">
+                        Jangan lupa follow juga akun Instagram ku ya! 😊
+                    </p>
+                `;
+                responseMessage.style.display = 'block';
+                btnLove.innerHTML = '<i class="fas fa-heart"></i> Kamu Membuatku Bahagia!';
+                btnLove.style.background = 'linear-gradient(to right, #4CAF50, #45a049)';
+                
+                // Efek hati ekstra
+                createHeartsBurst(15);
+                
+                // Scroll ke response message
+                responseMessage.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Tombol "Kita Tetap Berteman" diklik
+            btnFriends.addEventListener('click', function() {
+                responseMessage.innerHTML = `
+                    <h2>🤝 Aku Menghargai Kejujuranmu</h2>
+                    <p>Terima kasih sudah jujur tentang perasaanmu. Aku memahami dan menghormati keputusanmu.</p>
+                    <p>Meskipun aku berharap untuk lebih, aku tetap menghargai persahabatan kita yang sudah terbangun.</p>
+                    <p>Aku berharap kita bisa tetap berteman dengan baik seperti sebelumnya. Jika suatu hari kamu ingin berbicara, aku selalu siap mendengarkan.</p>
+                    <a href="${instagramUrl}" class="ig-direct" target="_blank">
+                        <i class="fab fa-instagram"></i> Tetap Terhubung di Instagram
+                    </a>
+                    <p style="margin-top: 20px; font-size: 1rem; color: #7c3a5c;">
+                        Aku berharap yang terbaik untukmu selalu.
+                    </p>
+                `;
+                responseMessage.style.display = 'block';
+                btnFriends.innerHTML = '<i class="fas fa-handshake"></i> Terima Kasih Sudah Jujur';
+                btnFriends.style.background = 'linear-gradient(to right, #6b7280, #4b5563)';
+                
+                // Scroll ke response message
+                responseMessage.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+
+</body>
+</html>

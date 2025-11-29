@@ -1,0 +1,304 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffafcc, #ffc8dd, #ffafcc);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #590d22;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .love-letter {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 40px;
+            transition: transform 0.5s ease;
+        }
+
+        .love-letter:hover {
+            transform: translateY(-10px);
+        }
+
+        .letter-header {
+            background: linear-gradient(to right, #ff758c, #ff8fab);
+            padding: 35px 30px;
+            text-align: center;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .letter-header h1 {
+            color: white;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .letter-header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+
+        .heart-decoration {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 2.5rem;
+            color: white;
+            animation: heartbeat 1.8s infinite;
+        }
+
+        .letter-content {
+            padding: 50px 45px;
+            font-size: 1.2rem;
+            text-align: justify;
+            background-color: white;
+        }
+
+        .letter-content p {
+            margin-bottom: 25px;
+            text-indent: 40px;
+        }
+
+        .letter-content p.highlight {
+            background: linear-gradient(120deg, #ffccd5, transparent 80%);
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #ff758c;
+            text-indent: 0;
+        }
+
+        .flowers-divider {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 2.2rem;
+            letter-spacing: 15px;
+            color: #ff8fab;
+        }
+
+        .memories-section {
+            background: #fff0f6;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 35px 0;
+            border: 1px dashed #ff8fab;
+        }
+
+        .memories-section h3 {
+            color: #c9184a;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .memories-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .memory-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .memory-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .memory-item i {
+            color: #ff758c;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .closing {
+            text-align: right;
+            margin-top: 40px;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.4rem;
+            color: #ff758c;
+            padding-right: 20px;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 10px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #c9184a;
+            padding-right: 20px;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 16px 45px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-love {
+            background: linear-gradient(to right, #ff758c, #ff8fab);
+            color: white;
+            box-shadow: 0 8px 20px rgba(255, 117, 140, 0.4);
+        }
+
+        .btn-friends {
+            background: linear-gradient(to right, #a5b4fc, #818cf8);
+            color: white;
+            box-shadow: 0 8px 20px rgba(129, 140, 248, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .response-message {
+            display: none;
+            background: linear-gradient(135deg, #ffafcc, #ffc8dd);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 40px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease;
+        }
+
+        .response-message h2 {
+            color: #590d22;
+            margin-bottom: 25px;
+            font-size: 2.3rem;
+        }
+
+        .response-message p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #590d22;
+            margin-bottom: 25px;
+        }
+
+        .ig-direct {
+            background: linear-gradient(45deg, #E1306C, #F77737);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
+            margin-top: 20px;
+            box-shadow: 0 8px 20px rgba(225, 48, 108, 0.4);
+        }
+
+        .ig-direct:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(225, 48, 108, 0.5);
+        }
+
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart-particle {
+            position: absolute;
+            font-size: 1.8rem;
+            color: #ff8fab;
+            opacity: 0;
+            animation: fall 6s linear infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                opacity: 1;
+                transform: translateX(0) rotate(0deg);
+            }
+            100% {
+                top: 110%;
+                opacity: 0;
+                transform: translateX(100px) rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .letter-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .letter-content {
+                padding: 30px 25px;
+                font-size: 1.1rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .memories-list {
+                grid-template-columns: 1fr;
+            }
+        }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pembukaan</title>
+    <link rel="stylesheet" href="birthday.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Selamat Ulang Tahun <span class="cake">🎂</span></h1>
+    <p class="subtitle" id="typing"> </p>
+    <button class="btn" id="celebrateBtn"><a href="birtdat4.html" class="masuk">✨ bukaa</a></button>
+  </div>
+
+  <audio id="bg-music" loop>
+    <source src="gambar/musik.mp3" type="audio/mpeg">
+  </audio>
+<script src="1.js">const text = "Semoga hari kamu selalu indah ya ✨💖";
+let i = 0;
+function typing() {
+if (i < text.length) {
+document.getElementById("typing").innerHTML += text.charAt(i);
+i++;
+setTimeout(typing, 100);
+}
+}
+typing();
+
+
+// Floating Hearts
+function createHeart() {
+const heart = document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML = "💖";
+heart.style.left = Math.random() * 100 + "vw";
+heart.style.fontSize = Math.random() * 20 + 15 + "px";
+document.body.appendChild(heart);
+setTimeout(() => { heart.remove(); }, 6000);
+}
+setInterval(createHeart, 700);
+
+
+// Confetti Effect
+function createConfetti() {
+const confetti = document.createElement("div");
+confetti.classList.add("confetti");
+document.body.appendChild(confetti);
+confetti.style.left = Math.random() * 100 + "vw";
+confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+setTimeout(() => confetti.remove(), 5000);
+}
+
+
+function celebrate() {
+document.getElementById("bg-music").play();
+for (let i = 0; i < 50; i++) {
+setTimeout(createConfetti, i * 100);
+}
+}
+</script></script>
+</html>

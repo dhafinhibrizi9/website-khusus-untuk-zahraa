@@ -1,0 +1,611 @@
+/* Photo Album Section */
+.photo-album-section {
+    background: linear-gradient(135deg, #fffaf0, #fff5e6, #fffaf0);
+    border-radius: 35px;
+    padding: 60px 40px;
+    margin: 60px 0;
+    box-shadow: 
+        0 25px 50px rgba(255, 182, 193, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 182, 193, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.photo-album-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, 
+        #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb, #ff9a9e);
+    background-size: 200% 100%;
+    animation: albumShimmer 4s ease-in-out infinite;
+}
+
+@keyframes albumShimmer {
+    0%, 100% { background-position: -200% 0; }
+    50% { background-position: 200% 0; }
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h3 {
+    color: #ff6b8b;
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #ff6b8b, #ff99ac, #ff9a9e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 8px rgba(255, 107, 139, 0.3);
+}
+
+.section-header p {
+    color: #ff99ac;
+    font-size: 1.3rem;
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* Album Slider */
+.album-slider {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto 50px;
+}
+
+.slider-container {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(255, 107, 139, 0.2);
+}
+
+.album-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    pointer-events: none;
+}
+
+.album-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+}
+
+/* Photo Card */
+.photo-card {
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-frame {
+    background: linear-gradient(145deg, #ffffff, #fffafb);
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 
+        0 15px 35px rgba(255, 107, 139, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(255, 182, 193, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.photo-frame:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 20px 45px rgba(255, 107, 139, 0.25),
+        0 0 30px rgba(255, 107, 139, 0.1);
+}
+
+.photo-image {
+    width: 350px;
+    height: 350px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.photo-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6rem;
+    opacity: 0.7;
+}
+
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(255, 107, 139, 0.9), 
+        rgba(255, 153, 172, 0.9));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+}
+
+.photo-image:hover .photo-overlay {
+    opacity: 1;
+}
+
+.view-poem-btn {
+    background: rgba(255, 255, 255, 0.95);
+    color: #ff6b8b;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.view-poem-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+.photo-caption {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 182, 193, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.caption-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    animation: captionFloat 3s ease-in-out infinite;
+}
+
+@keyframes captionFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+.caption-text {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ff6b8b;
+    margin-bottom: 5px;
+}
+
+.caption-date {
+    font-size: 1rem;
+    color: #ff99ac;
+    font-style: italic;
+}
+
+/* Slider Navigation */
+.slider-nav-album {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.slider-arrow-album {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff6b8b, #ff99ac);
+    color: white;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(255, 107, 139, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-arrow-album:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 30px rgba(255, 107, 139, 0.6);
+}
+
+.slider-dots-album {
+    display: flex;
+    gap: 15px;
+}
+
+.slider-dot-album {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ffd1dc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.slider-dot-album.active {
+    background: #ff6b8b;
+    transform: scale(1.3);
+}
+
+.slider-dot-album.active::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 50%;
+    border: 2px solid #ff6b8b;
+    animation: dotPulseAlbum 2s ease-in-out infinite;
+}
+
+@keyframes dotPulseAlbum {
+    0%, 100% { 
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Slide Counter */
+.slide-counter-album {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-size: 1rem;
+    color: #ff6b8b;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 182, 193, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 107, 139, 0.1);
+}
+
+.current-slide-album {
+    font-size: 1.2rem;
+}
+
+.counter-separator-album {
+    margin: 0 5px;
+    opacity: 0.7;
+}
+
+.total-slides-album {
+    opacity: 0.7;
+}
+
+/* Album Stats */
+.album-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.stat-item-album {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 250, 251, 0.8));
+    border-radius: 25px;
+    padding: 30px 25px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 182, 193, 0.3);
+    box-shadow: 0 8px 25px rgba(255, 107, 139, 0.15);
+    transition: all 0.3s ease;
+}
+
+.stat-item-album:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+        0 15px 35px rgba(255, 107, 139, 0.25),
+        0 0 30px rgba(255, 107, 139, 0.1);
+}
+
+.stat-icon-album {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 4px 8px rgba(255, 107, 139, 0.4));
+    animation: statBounceAlbum 2s ease-in-out infinite;
+}
+
+@keyframes statBounceAlbum {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.stat-info-album {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stat-number-album {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #ff6b8b;
+    line-height: 1;
+    background: linear-gradient(45deg, #ff6b8b, #ff99ac);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label-album {
+    font-size: 1rem;
+    color: #ff99ac;
+    font-weight: 600;
+}
+
+/* Poem Modal */
+.poem-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    backdrop-filter: blur(10px);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+.poem-modal.show {
+    display: flex;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(10px);
+    }
+}
+
+.modal-content-poem {
+    background: linear-gradient(135deg, #ffffff, #fffafb);
+    border-radius: 30px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    position: relative;
+    animation: modalSlideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 107, 139, 0.1);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: #ff6b8b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-modal:hover {
+    background: rgba(255, 107, 139, 0.2);
+    transform: scale(1.1);
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 182, 193, 0.3);
+}
+
+.modal-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    animation: modalIconFloat 3s ease-in-out infinite;
+}
+
+@keyframes modalIconFloat {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-10px) scale(1.1); }
+}
+
+.modal-title {
+    font-size: 2rem;
+    color: #ff6b8b;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.modal-subtitle {
+    font-size: 1.1rem;
+    color: #ff99ac;
+    font-style: italic;
+}
+
+.poem-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0 10px;
+}
+
+.poem-line {
+    margin-bottom: 15px;
+    opacity: 0;
+    animation: poemLineAppear 0.6s ease-out forwards;
+}
+
+@keyframes poemLineAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 182, 193, 0.3);
+}
+
+.poem-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.poem-author {
+    font-size: 0.9rem;
+    color: #ff6b8b;
+    font-weight: 600;
+}
+
+.poem-date {
+    font-size: 0.8rem;
+    color: #ff99ac;
+    font-style: italic;
+}
+
+.share-poem-btn {
+    background: linear-gradient(135deg, #ff6b8b, #ff99ac);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 139, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.share-poem-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 139, 0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .photo-album-section {
+        padding: 40px 20px;
+        margin: 40px 0;
+    }
+    
+    .section-header h3 {
+        font-size: 2.2rem;
+    }
+    
+    .slider-container {
+        height: 400px;
+    }
+    
+    .photo-image {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .photo-card {
+        padding: 20px;
+    }
+    
+    .slider-nav-album {
+        gap: 20px;
+    }
+    
+    .slider-arrow-album {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .modal-content-poem {
+        padding: 30px 20px;
+    }
+    
+    .album-stats {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}

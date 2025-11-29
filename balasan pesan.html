@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="balasan.css">
+</head>
+<body>
+  <!-- Tambahkan bagian ini setelah interactive-form-section -->
+<div class="single-prayer-section">
+    <div class="section-header">
+        <h3>💖 doa Spesial untukk zahraa</h3>
+        <p>Sebuah doa yang di panjatkan khusus untuk zahraa </p>
+    </div>
+
+    <!-- Single Prayer Card -->
+    <div class="prayer-card-single">
+        <div class="card-main">
+            <!-- Card Header -->
+            <div class="card-header-pink">
+                <div class="sender-identity">
+                    <div class="avatar-container">
+                        <div class="main-avatar">💕</div>
+                        <div class="avatar-glow"></div>
+                    </div>
+                    <div class="sender-info">
+                        <div class="sender-name">Dari Seseorang </div>
+                        <div class="sender-relation"></div>
+                    </div>
+                </div>
+                <div class="prayer-badge">Doa  & Harapan</div>
+            </div>
+
+            <!-- Card Content -->
+            <div class="card-content-pink">
+                <div class="prayer-title-main">Doa untuk Kebahagiaanmu</div>
+                
+                <div class="prayer-text-main">
+                    khusus di hari spesialmu
+                    
+                    <span class="prayer-highlight">Semoga setiap langkahmu selalu dibimbing cahaya kebahagiaan</span>, 
+                    setiap impianmu menemukan sayap untuk terbang tinggi, dan setiap harapanmu berbuah manis dalam waktunya.
+                    
+                    <span class="prayer-highlight">Semoga hatimu selalu dipenuhi kedamaian</span> yang tak tergoyahkan, 
+                    cinta yang tak bertepi, dan senyuman yang tak pernah pudar. 
+                    
+                    <span class="prayer-highlight">Semoga tahun ini membawamu lebih dekat pada allah swt</span> 
+                    dan menjauhkanmu dari segala yang dilarangnya.
+                    
+                    Aku berdoa agar allah swt selalu melindungimu, membimbingmu, dan memberkatimu dengan segala kebaikan."
+                </div>
+
+                <div class="prayer-blessing-main">
+                    💫 Aamiin... Semoga semua doa dan harapanmu terkabul 💫
+                </div>
+            </div>
+
+            <!-- Read Receipt -->
+            <div class="read-receipt-single">
+                <div class="receipt-status">
+                    <div class="status-indicator reading">
+                        <div class="status-dot"></div>
+                        <span class="status-text">Sedang membaca doamu...</span>
+                    </div>
+                    <div class="receipt-time">Bersama berdoa </div>
+                </div>
+                <div class="receipt-actions">
+                    <button class="prayer-btn" id="sendBlessing">
+                        <span class="btn-icon">✨</span>
+                        Kirim doa
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Decorations -->
+        <div class="card-decorations">
+            <div class="decoration-heart">💗</div>
+            <div class="decoration-heart">💓</div>
+            <div class="decoration-heart">💞</div>
+            <div class="decoration-sparkle">✦</div>
+            <div class="decoration-sparkle">✧</div>
+            <div class="decoration-sparkle">✦</div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="floating-love">
+            <div class="floating-element">💖</div>
+            <div class="floating-element">💝</div>
+            <div class="floating-element">💘</div>
+            <div class="floating-element">💕</div>
+            <div class="floating-element">💗</div>
+        </div>
+    </div>
+
+    <!-- Prayer Stats -->
+    <div class="prayer-stats-single">
+        <div class="stat-item-pink">
+            <div class="stat-icon">🕰️</div>
+            <div class="stat-details">
+                <div class="stat-number" id="prayerDuration">2:30</div>
+                <div class="stat-label">Durasi Membaca</div>
+            </div>
+        </div>
+        <div class="stat-item-pink">
+            <div class="stat-icon">💞</div>
+            <div class="stat-details">
+                <div class="stat-number" id="loveSent">99</div>
+                <div class="stat-label">Doa Dikirim</div>
+            </div>
+        </div>
+        <div class="stat-item-pink">
+            <div class="stat-icon">✨</div>
+            <div class="stat-details">
+                <div class="stat-number" id="blessingsReceived">∞</div>
+                <div class="stat-label">Berkah Diterima</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script src="balasan.js">
+    // Single Prayer Card with Interactive Features
+class SinglePrayerCard {
+    constructor() {
+        this.readingStartTime = Date.now();
+        this.blessingsSent = 0;
+        this.isReading = true;
+        this.initializeCard();
+    }
+
+    initializeCard() {
+        this.bindEvents();
+        this.startReadingTimer();
+        this.updateStats();
+        this.createFloatingElements();
+        
+        // Simulate reading progress
+        this.simulateReading();
+    }
+
+    bindEvents() {
+        // Send blessing button
+        const sendBlessingBtn = document.getElementById('sendBlessing');
+        if (sendBlessingBtn) {
+            sendBlessingBtn.addEventListener('click', () => {
+                this.sendBlessing();
+            });
+        }
+
+        // Track visibility for reading time
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.pauseReading();
+            } else {
+                this.resumeReading();
+            }
+        });
+
+        // Add click effect on card
+        const prayerCard = document.querySelector('.prayer-card-single');
+        if (prayerCard) {
+            prayerCard.addEventListener('click', (e) => {
+                if (e.target.closest('.prayer-btn')) return;
+                this.createClickEffect(e);
+            });
+        }
+    }
+
+    startReadingTimer() {
+        this.readingTimer = setInterval(() => {
+            if (this.isReading) {
+                this.updateReadingTime();
+                this.updateStats();
+            }
+        }, 1000);
+    }
+
+    updateReadingTime() {
+        const elapsed = Math.floor((Date.now() - this.readingStartTime) / 1000);
+        const minutes = Math.floor(elapsed / 60);
+        const seconds = elapsed % 60;
+        document.getElementById('prayerDuration').textContent = 
+            `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    updateStats() {
+        // Update love sent (simulated based on reading time)
+        const elapsed = Math.floor((Date.now() - this.readingStartTime) / 1000);
+        const loveCount = Math.min(99, Math.floor(elapsed / 3) + this.blessingsSent * 10);
+        document.getElementById('loveSent').textContent = loveCount;
+
+        // Update blessings received
+        document.getElementById('blessingsReceived').textContent = 
+            this.blessingsSent > 0 ? `${this.blessingsSent * 10}+` : '∞';
+    }
+
+    simulateReading() {
+        // Simulate reading progress with status updates
+        setTimeout(() => {
+            this.updateReadingStatus('Masih membaca doa... 💭');
+        }, 3000);
+
+        setTimeout(() => {
+            this.updateReadingStatus('Merenungkan makna... 🤔');
+        }, 7000);
+
+        setTimeout(() => {
+            this.updateReadingStatus('Merasakan cinta dalam doa... 💖');
+            this.showEmotionEffect();
+        }, 12000);
+    }
+
+    updateReadingStatus(status) {
+        const statusText = document.querySelector('.status-text');
+        if (statusText) {
+            statusText.textContent = status;
+            
+            // Add typing effect
+            statusText.style.animation = 'none';
+            setTimeout(() => {
+                statusText.style.animation = 'typingEffect 0.5s ease-out';
+            }, 10);
+        }
+    }
+
+    sendBlessing() {
+        this.blessingsSent++;
+        
+        // Create blessing effect
+        this.createBlessingEffect();
+        
+        // Update button text temporarily
+        const button = document.getElementById('sendBlessing');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<span class="btn-icon">💫</span> semoga segala doamu terkabul';
+        button.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+        
+        setTimeout(() => {
+            button.innerHTML = originalText;
+            button.style.background = 'linear-gradient(135deg, #ff6b8b, #ff99ac)';
+        }, 2000);
+        
+        // Update stats
+        this.updateStats();
+        
+        // Show confirmation
+        this.showBlessingConfirmation();
+    }
+
+    createBlessingEffect() {
+        const button = document.getElementById('sendBlessing');
+        const rect = button.getBoundingClientRect();
+        
+        for (let i = 0; i < 15; i++) {
+            const blessing = document.createElement('div');
+            blessing.style.cssText = `
+                position: fixed;
+                left: ${rect.left + rect.width / 2}px;
+                top: ${rect.top + rect.height / 2}px;
+                font-size: ${Math.random() * 20 + 15}px;
+                pointer-events: none;
+                z-index: 1000;
+                animation: blessingFly ${Math.random() * 2 + 1}s ease-out forwards;
+                opacity: 0;
+            `;
+            
+            const symbols = ['✨', '🌟', '💫', '🎇', '💖', '💝'];
+            blessing.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            
+            blessing.style.setProperty('--x', (Math.random() - 0.5) * 200 + 'px');
+            blessing.style.setProperty('--y', (Math.random() - 0.5) * 200 + 'px');
+            blessing.style.setProperty('--rotate', (Math.random() - 0.5) * 360 + 'deg');
+            
+            document.body.appendChild(blessing);
+            
+            setTimeout(() => {
+                if (blessing.parentNode) {
+                    blessing.parentNode.removeChild(blessing);
+                }
+            }, 2000);
+        }
+    }
+
+    showBlessingConfirmation() {
+        const confirmation = document.createElement('div');
+        confirmation.className = 'blessing-confirmation';
+        confirmation.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, rgba(255, 107, 139, 0.95), rgba(255, 153, 172, 0.95));
+            color: white;
+            padding: 20px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(255, 107, 139, 0.4);
+            z-index: 1000;
+            animation: blessingPopup 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        `;
+        
+        confirmation.innerHTML = `
+            <div style="font-size: 2rem; margin-bottom: 10px;">💖</div>
+            <div style="font-size: 1.2rem; font-weight: 600;">Berkah Cinta Terkirim!</div>
+            <div style="font-size: 0.9rem; opacity: 0.9; margin-top: 5px;">Doa balasanmu penuh makna</div>
+        `;
+        
+        document.body.appendChild(confirmation);
+        
+        setTimeout(() => {
+            confirmation.style.animation = 'blessingPopupOut 0.5s ease-in forwards';
+            setTimeout(() => {
+                if (confirmation.parentNode) {
+                    confirmation.parentNode.removeChild(confirmation);
+                }
+            }, 500);
+        }, 2000);
+    }
+
+    createClickEffect(event) {
+        const effect = document.createElement('div');
+        effect.style.cssText = `
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ff6b8b, transparent);
+            pointer-events: none;
+            z-index: 10;
+            animation: clickRipple 0.6s ease-out forwards;
+        `;
+        
+        effect.style.left = (event.clientX - 10) + 'px';
+        effect.style.top = (event.clientY - 10) + 'px';
+        
+        document.querySelector('.prayer-card-single').appendChild(effect);
+        
+        setTimeout(() => {
+            if (effect.parentNode) {
+                effect.parentNode.removeChild(effect);
+            }
+        }, 600);
+    }
+
+    showEmotionEffect() {
+        // Add emotional glow to the card
+        const card = document.querySelector('.prayer-card-single');
+        card.style.animation = 'emotionalGlow 2s ease-in-out';
+        
+        setTimeout(() => {
+            card.style.animation = '';
+        }, 2000);
+    }
+
+    pauseReading() {
+        this.isReading = false;
+        const statusText = document.querySelector('.status-text');
+        if (statusText) {
+            statusText.textContent = 'Paused... ⏸️';
+        }
+    }
+
+    resumeReading() {
+        this.isReading = true;
+        const statusText = document.querySelector('.status-text');
+        if (statusText) {
+            statusText.textContent = 'Lanjut membaca... 📖';
+        }
+    }
+
+    createFloatingElements() {
+        // Additional floating elements can be added here
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes typingEffect {
+                0% { opacity: 0; transform: translateY(5px); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+            
+            @keyframes blessingFly {
+                0% {
+                    opacity: 1;
+                    transform: translate(0, 0) rotate(0deg) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translate(var(--x), var(--y)) rotate(var(--rotate)) scale(0);
+                }
+            }
+            
+            @keyframes blessingPopup {
+                0% {
+                    opacity: 0;
+                    transform: translate(-50%, -50%) scale(0.5);
+                }
+                70% {
+                    transform: translate(-50%, -50%) scale(1.1);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translate(-50%, -50%) scale(1);
+                }
+            }
+            
+            @keyframes blessingPopupOut {
+                0% {
+                    opacity: 1;
+                    transform: translate(-50%, -50%) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translate(-50%, -50%) scale(0.5);
+                }
+            }
+            
+            @keyframes clickRipple {
+                0% {
+                    transform: scale(1);
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: scale(20);
+                    opacity: 0;
+                }
+            }
+            
+            @keyframes emotionalGlow {
+                0%, 100% {
+                    box-shadow: 0 20px 60px rgba(255, 107, 139, 0.25);
+                }
+                50% {
+                    box-shadow: 
+                        0 25px 80px rgba(255, 107, 139, 0.4),
+                        0 0 60px rgba(255, 107, 139, 0.3);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+// Initialize the single prayer card
+document.addEventListener('DOMContentLoaded', function() {
+    new SinglePrayerCard();
+});
+</script>
+</body>
+</html>

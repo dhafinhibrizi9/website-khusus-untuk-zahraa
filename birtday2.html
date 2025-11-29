@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kartu ucapan</title>
+    <link rel="stylesheet" href="birthdat2.css">
+</head>
+<body>
+      <div class="stars" id="stars"></div>
+    
+    <!-- Efek Love akan dibuat dengan JavaScript -->
+
+    <div class="header">
+        <h1>kartu Ucapan Spesial untuk zahraa</h1>
+        <p>Pilih dan klik salah satu kartu di bawah ini untuk melihat pesan khusus</p>
+    </div>
+
+    <div class="cards-container">
+        <!-- Kartu 1 - Floral Theme -->
+        <div class="card card-1">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="gambar/gift.gif" alt="Bunga" class="card-image">
+                    <h2>kartu pertama</h2>
+                    <p class="card-subtitle">Klik untuk membuka</p>
+                    <div class="bubble bubble-1"></div>
+                    <div class="bubble bubble-2"></div>
+                </div>
+                <div class="card-back">
+                    <div class="icon">🌸</div>
+                    <h2 class="card-title">Semoga Bahagia</h2>
+                    <div class="card-message">
+                        <p>Semoga panjang umurmu dan selalu membawa kebahagiaan untukmu ya, dan untuk setiap langkahmu selalu dipenuhi dengan kebahagian.</p>
+                    </div>
+                    <img src="gambar/gift.gif" alt="Bunga Belakang" class="card-image floating">
+                    <button class="btn-back">tutup Kartu</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kartu 2 - Nature Theme -->
+        <div class="card card-2">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="gambar/gift2.gif" alt="Pemandangan Alam" class="card-image">
+                    <h2>kartu kedua</h2>
+                    <p class="card-subtitle">Klik untuk membuka</p>
+                    <div class="bubble bubble-3"></div>
+                    <div class="bubble bubble-4"></div>
+                </div>
+                <div class="card-back">
+                    <div class="icon">🌿</div>
+                    <h2 class="card-title">Harmoni Kehidupan</h2>
+                    <div class="card-message">
+                        <p>Seperti alam yang selalu memberikan kedamaian, semoga hidupmu juga selalu dipenuhi dengan ketenangan dan kebahagiaan.</p>
+                    </div>
+                    <img src="gambar/gift 12.gif" alt="Hutan" class="card-image floating">
+                    <button class="btn-back">Tutup Kartu</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kartu 3 - Sunset Theme -->
+        <div class="card card-3">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="gambar/gift3.gif" alt="Senja" class="card-image">
+                    <h2>Kartu Senja</h2>
+                    <p class="card-subtitle">Klik untuk membuka</p>
+                    <div class="bubble bubble-1"></div>
+                    <div class="bubble bubble-3"></div>
+                </div>
+                <div class="card-back">
+                    <div class="icon">🌅</div>
+                    <h2 class="card-title">Keindahan Hidup</h2>
+                    <div class="card-message">
+                        <p>Seperti senja yang selalu indah, semoga hari dalam hidupmu juga dipenuhi dengan keindahan dan kedamaian.</p>
+                    </div>
+                    <img src="gambar/gift 10.gif" alt="Pantai Senja" class="card-image floating">
+                    <button class="btn-back">Tutup Kartu</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kartu 4 - Ocean Theme -->
+        <div class="card card-4">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="gambar/gift4.gif" alt="Laut" class="card-image">
+                    <h2>Kartu Lautan</h2>
+                    <p class="card-subtitle">Klik untuk membuka</p>
+                    <div class="bubble bubble-2"></div>
+                    <div class="bubble bubble-4"></div>
+                </div>
+                <div class="card-back">
+                    <div class="icon">🌊</div>
+                    <h2 class="card-title">Kebahagiaan Hati</h2>
+                    <div class="card-message">
+                        <p>Seperti lautan yang luas, semoga hatimu juga selalu dipenuhi dengan kebahagiaan yang tak terbatas.</p>
+                    </div>
+                    <img src="gambar/gift 11.gif" alt="Gelombang Laut" class="card-image floating">
+                    <button class="btn-back">Tutup Kartu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="2.js">
+    document.addEventListener('DOMContentLoaded', function() {
+            // Create stars
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random properties
+                const size = Math.random() * 3;
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const opacity = Math.random() * 0.8 + 0.2;
+                const animationDelay = Math.random() * 5;
+                
+                // Apply styles
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${left}%`;
+                star.style.top = `${top}%`;
+                star.style.opacity = opacity;
+                star.style.animationDelay = `${animationDelay}s`;
+                
+                starsContainer.appendChild(star);
+            }
+            
+            // Create love elements
+            function createLove() {
+                const love = document.createElement('div');
+                love.classList.add('love');
+                love.innerHTML = '❤';
+                
+                // Random properties
+                const left = Math.random() * 100;
+                const size = Math.random() * 20 + 10;
+                const animationDuration = Math.random() * 4 + 3;
+                
+                // Apply styles
+                love.style.left = `${left}%`;
+                love.style.fontSize = `${size}px`;
+                love.style.animationDuration = `${animationDuration}s`;
+                
+                document.body.appendChild(love);
+                
+                // Remove love after animation completes
+                setTimeout(() => {
+                    love.remove();
+                }, animationDuration * 1000);
+            }
+            
+            // Create love periodically
+            setInterval(createLove, 300);
+            
+            // Add click event to all cards
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Only flip if not already flipped
+                    if (!this.classList.contains('flipped')) {
+                        this.classList.add('flipped');
+                        
+                        // Create extra love when card is flipped
+                        for (let i = 0; i < 5; i++) {
+                            setTimeout(() => {
+                                createLove();
+                            }, i * 200);
+                        }
+                    }
+                });
+                
+                // Add event to back buttons
+                const btnBack = card.querySelector('.btn-back');
+                btnBack.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    card.classList.remove('flipped');
+                });
+            });
+            
+            // Add hover effect
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+        </script>
+</body>
+</html>

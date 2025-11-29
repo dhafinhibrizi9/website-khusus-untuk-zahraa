@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>khusus untuk zahraa</title>
+    <link rel="stylesheet" href="birday4.css">
+</head>
+<body>
+     <div class="container">
+        <div class="header">
+            <h1>🎂 selamat ulang tahun ya zahraaaa 🎉</h1>
+            <p class="subtitle">semogaa harimu penuh kebahagiaan dan keceriaan!</p>
+            <div class="floating-hearts" id="floatingHearts"></div>
+        </div>
+
+        <div class="content">
+            <div class="message-section">
+                <h2>untuk yang berulang tahun hari ini,</h2>
+                
+                <div class="birthday-message">
+                    <p class="message-text">
+                        di hari yang spesial mu ini, <span class="message-highlight">selamat ulang tahunn yaa zahraa.</span> semoga setiap detik dalam hidupmu dipenuhi dengan kebahagiaan, 
+                        tawa, dan keceriaan.Semoga semua impian dan harapanmu dapat terwujud, dan setiap langkahmu 
+                        membawamu menuju kesuksesan dan cita citamu.
+                    </p>
+                    <p class="message-text">
+                        teruslah bersinar dan menjadi pribadi yang membawa kebahagiaan bagi orang-orang di sekitarmu. 
+                        <span class="message-highlight">Kamu adalah anugerah</span> yang membuat dunia menjadi tempat yang lebih indah. 
+                        Semoga tahun ini membawa lebih banyak peluang, pengalaman berharga, dan kenangan manis yang akan 
+                        selalu terkenang.
+                    </p>
+                    <p class="message-text typing-effect" id="typingMessage">
+                        Happy Birthday zahraa  Semoga kamuu panjang umur dan sehat selaluu yaa
+                    </p>
+                </div>
+                
+                <div class="interaction-panel">
+                    <h3>kirim doa mu:</h3>
+                    <textarea class="wish-input" placeholder="Tulis doamu di sini..."></textarea>
+                    <button class="btn" id="sendWish"><a class="pesan" href="balasan pesan.html">kirim doamu 💖</a></button>
+                    
+                    <div class="wishes-container" id="wishesContainer">
+                        <!-- Ucapan akan muncul di sini -->
+                    </div>
+                </div>
+                
+                <div class="interaction-panel">
+                    <h3>Buat hari ini lebih spesial:</h3>
+                    <button class="btn" id="confettiBtn">Lepaskan Konfeti! 🎊</button>
+                    <button class="btn" id="musicBtn">Putar Musik 🎵</button>
+                    <button class="btn" id="animateBear">Gerakkan Beruang 🐻</button>
+                    <button class="btn" id="hugBear">cium Beruang 🤗</button>
+                    <button class="btn" id="changeBgEffect">Ubah Efek Latar 🎨</button>
+                </div>
+            </div>
+            
+            <div class="bear-section">
+                <!-- Efek latar belakang beruang -->
+                <div class="bear-bg-effect" id="bearBgEffect">
+                    <div class="bg-pulse"></div>
+                </div>
+                
+                <div class="bear-container">
+                    <div class="bear" id="bear">
+                        <div class="bear-head">
+                            <div class="bear-ear ear-left"></div>
+                            <div class="bear-ear ear-right"></div>
+                            <div class="bear-blush blush-left"></div>
+                            <div class="bear-blush blush-right"></div>
+                            <div class="bear-eye eye-left">
+                                <div class="bear-pupil"></div>
+                            </div>
+                            <div class="bear-eye eye-right">
+                                <div class="bear-pupil"></div>
+                            </div>
+                            <div class="bear-nose"></div>
+                            <div class="bear-mouth"></div>
+                            <div class="bear-bow"></div>
+                        </div>
+                        <div class="bear-body">
+                            <div class="bear-tummy"></div>
+                        </div>
+                        <div class="bear-arm arm-left">
+                            <div class="bear-holding">💖</div>
+                        </div>
+                        <div class="bear-arm arm-right"></div>
+                        <div class="bear-foot foot-left"></div>
+                        <div class="bear-foot foot-right"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layer-section">
+            <h2 class="layer-title">Layanan Spesial Ulang Tahun</h2>
+            <div class="layer-content">
+                <div class="layer-item">
+                    <div class="layer-icon">🎁</div>
+                    <a href="birtday2.html">kartu ucapan</a>
+                </div>
+                <div class="layer-item">
+                    <div class="layer-icon">📜</div>
+                    <a href="pesan khusus..html">pesan khusus</a>
+                </div>
+                <div class="layer-item">
+                    <div class="layer-icon">🎨</div>
+                    <a href="puisi spesial.html">puisi spesial</a>
+                </div>
+                <div class="layer-item">
+                    <div class="layer-icon">📸</div>
+                    <a href="puisi.html">puisi khusus</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>dibuat dengan spesial untuk hari spesial zahraa | © 2025 ucapan ulang tahunn spesial untuk zahraa</p>
+        </footer>
+    </div>
+
+    
+<script src="4.js"> 
+    document.addEventListener('DOMContentLoaded', function() {
+            const bear = document.getElementById('bear');
+            const confettiBtn = document.getElementById('confettiBtn');
+            const musicBtn = document.getElementById('musicBtn');
+            const animateBearBtn = document.getElementById('animateBear');
+            const hugBearBtn = document.getElementById('hugBear');
+            const sendWishBtn = document.getElementById('sendWish');
+            const wishInput = document.querySelector('.wish-input');
+            const wishesContainer = document.getElementById('wishesContainer');
+            const floatingHearts = document.getElementById('floatingHearts');
+            const typingMessage = document.getElementById('typingMessage');
+            
+            // Tambahkan hati yang mengambang
+            function createFloatingHearts() {
+                for (let i = 0; i < 15; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '❤️';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDelay = Math.random() * 8 + 's';
+                    heart.style.fontSize = (Math.random() * 20 + 16) + 'px';
+                    floatingHearts.appendChild(heart);
+                }
+            }
+            
+            createFloatingHearts();
+            
+            // Animasi beruang melompat
+            animateBearBtn.addEventListener('click', function() {
+                bear.style.animation = 'bearJump 2s ease';
+                setTimeout(() => {
+                    bear.style.animation = '';
+                }, 800);
+                
+                createConfetti();
+            });
+            
+            // Peluk beruang
+            hugBearBtn.addEventListener('click', function() {
+                bear.style.animation = 'heartBeat 1.2s ease';
+                setTimeout(() => {
+                    bear.style.animation = '';
+                }, 1200);
+                
+                // Tambahkan efek hati
+                const heart = document.createElement('div');
+                heart.style.position = 'absolute';
+                heart.style.top = '50%';
+                heart.style.left = '50%';
+                heart.style.fontSize = '40px';
+                heart.style.color = '#ff6b8b';
+                heart.innerHTML = '💖';
+                heart.style.transform = 'translate(-50%, -50%)';
+                heart.style.zIndex = '10';
+                bear.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 1500);
+            });
+            
+            // Efek konfeti
+            confettiBtn.addEventListener('click', function() {
+                createConfetti();
+            });
+            
+            // Musik
+            let audio = null;
+            let isPlaying = false;
+            musicBtn.addEventListener('click', function() {
+                if (!audio) {
+                    // Menggunakan audio dari sumber eksternal (ganti dengan URL musik Anda)
+                    audio = new Audio('musik.mp3');
+                    audio.loop = true;
+                }
+                
+                if (isPlaying) {
+                    audio.pause();
+                    musicBtn.innerHTML = 'Putar Musik 🎵';
+                } else {
+                    audio.play().catch(e => {
+                        console.log("Autoplay prevented. Please interact with the page first.");
+                        musicBtn.innerHTML = 'Klik lagi untuk memutar';
+                    });
+                    musicBtn.innerHTML = 'Jeda Musik ⏸️';
+                }
+                
+                isPlaying = !isPlaying;
+            });
+            
+            // Kirim ucapan
+            sendWishBtn.addEventListener('click', function() {
+                if (wishInput.value.trim() !== '') {
+                    const wishItem = document.createElement('div');
+                    wishItem.className = 'wish-item';
+                    
+                    // Tambahkan timestamp
+                    const now = new Date();
+                    const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                    
+                    wishItem.innerHTML = `
+                        <strong>Ucapan:</strong> ${wishInput.value}<br>
+                        <small>Dikirim pada: ${timeString}</small>
+                    `;
+                    
+                    wishesContainer.appendChild(wishItem);
+                    wishInput.value = '';
+                    
+                    // Auto scroll ke ucapan terbaru
+                    wishesContainer.scrollTop = wishesContainer.scrollHeight;
+                    
+                    // Animasi beruang melambai
+                    bear.style.animation = 'bearWave 0.5s ease';
+                    setTimeout(() => {
+                        bear.style.animation = '';
+                    }, 1000);
+                    
+                    // Efek konfeti kecil
+                    createSmallConfetti();
+                }
+            });
+            
+            // Fungsi untuk membuat konfeti
+            function createConfetti() {
+                const colors = ['#ff6b8b', '#ff99ac', '#ffc6d9', '#ffde7d', '#a3d9b1', '#9ac6ff'];
+                const shapes = ['❤️', '⭐', '🎉', '🎊', '✨', '🎂'];
+                
+                for (let i = 0; i < 120; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    
+                    // Pilih antara bentuk warna atau emoji
+                    if (Math.random() > 0.5) {
+                        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                        confetti.style.width = Math.random() * 15 + 10 + 'px';
+                        confetti.style.height = Math.random() * 15 + 10 + 'px';
+                        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    } else {
+                        confetti.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
+                        confetti.style.fontSize = (Math.random() * 20 + 16) + 'px';
+                        confetti.style.background = 'transparent';
+                        confetti.style.width = 'auto';
+                        confetti.style.height = 'auto';
+                    }
+                    
+                    confetti.style.opacity = Math.random();
+                    confetti.style.animation = `fall ${Math.random() * 5 + 3}s linear forwards`;
+                    
+                    document.body.appendChild(confetti);
+                    
+                    // Hapus confetti setelah animasi selesai
+                    setTimeout(() => {
+                        if (confetti.parentNode) {
+                            confetti.remove();
+                        }
+                    }, 8000);
+                }
+            }
+            
+            // Konfeti kecil untuk ucapan
+            function createSmallConfetti() {
+                const colors = ['#ff6b8b', '#ff99ac', '#ffc6d9'];
+                
+                for (let i = 0; i < 30; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = Math.random() * 10 + 5 + 'px';
+                    confetti.style.height = Math.random() * 10 + 5 + 'px';
+                    confetti.style.borderRadius = '50%';
+                    confetti.style.opacity = Math.random();
+                    confetti.style.animation = `fall ${Math.random() * 3 + 1}s linear forwards`;
+                    
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        if (confetti.parentNode) {
+                            confetti.remove();
+                        }
+                    }, 4000);
+                }
+            }
+            
+            // Interaksi dengan beruang
+            bear.addEventListener('click', function() {
+                this.style.animation = 'bearJump 0.8s ease';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 800);
+                
+                createConfetti();
+            });
+            
+            // Tambah beberapa ucapan contoh
+            const sampleWishes = [
+                "Selamat ulang tahunya zahraa Semoga panjang umur dan sehat selalu.",
+                "Happy Birthday! May all your dreams come true.",
+                "Di hari spesialmu ini kudoakan yang terbaik untukmu.",
+                "Semoga bertambah usia, bertambah juga kebahagiaannya.",
+                "Panjang umur, bahagia selalu, dan sukses dalam segala hal",
+                "Teruslah menjadi pribadi yang menyenangkan dan inspiratif oky"
+            ];
+            
+            sampleWishes.forEach(wish => {
+                const wishItem = document.createElement('div');
+                wishItem.className = 'wish-item';
+                
+                const now = new Date();
+                const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                
+                wishItem.innerHTML = `
+                    <strong>Ucapan:</strong> ${wish}<br>
+                    <small>Dikirim pada: ${timeString}</small>
+                `;
+                
+                wishesContainer.appendChild(wishItem);
+            });
+            
+            // Efek ketik pada pesan
+            setTimeout(() => {
+                typingMessage.style.animation = 'none';
+                typingMessage.style.borderRight = 'none';
+                typingMessage.style.whiteSpace = 'normal';
+            }, 4000);
+        });
+    </script>
+
+</body>
+</html>
